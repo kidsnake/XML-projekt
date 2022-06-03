@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+   <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.18.3/dist/tsparticles.min.js"></script>
+
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="tsparticles"> 
+        <script>
+        tsParticles.load("tsparticles", {
+    fpsLimit: 60,
+    particles: {
+      color: {
+        value: ["#E3F8FF", "#28CC9E", "#A6ED8E"]
+      },
+      move: {
+        enable: true,
+        direction: "top-right",
+        random: true,
+        speed: 1.5
+      },
+      number: {
+        value: 50
+      },
+      opacity: {
+        value: 0.6,
+        random: {
+          enable: true,
+          minimumValue: 0.3
+        }
+      },
+      shape: {
+        type: ["square", "circle"]
+      },
+      size: {
+        value: 2
+      }
+    }
+  });
+    </script>
+    </div>
+<div class="login-box">
+  <h2>Hvala na pažnji!</h2>
+  <h2>&#10084;</h2>
+  
+</div>
+</body>
+</html>

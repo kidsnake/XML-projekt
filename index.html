@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+   <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.18.3/dist/tsparticles.min.js"></script>
+
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="tsparticles"> 
+        <script>
+        tsParticles.load("tsparticles", {
+    fpsLimit: 60,
+    particles: {
+      color: {
+        value: ["#E3F8FF", "#28CC9E", "#A6ED8E"]
+      },
+      move: {
+        enable: true,
+        direction: "top-right",
+        random: true,
+        speed: 1.5
+      },
+      number: {
+        value: 50
+      },
+      opacity: {
+        value: 0.6,
+        random: {
+          enable: true,
+          minimumValue: 0.3
+        }
+      },
+      shape: {
+        type: ["square", "circle"]
+      },
+      size: {
+        value: 2
+      }
+    }
+  });
+    </script>
+    </div>
+<div class="login-box">
+  <h2>Login</h2>
+  <form>
+    <div class="user-box">
+      <input type="text" name="" required="" id ="inputuser">
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="" required="" id = "inputpw">
+      <label>Password</label>
+      
+    </div>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js""></script>
+    <script>
+      var korisnici;
+      $.getJSON('useri.json', function(data) {
+      korisnici = data;
+       console.log(korisnici[0].username); 
+      });
+      var proslo = false;
+        function provjera(){
+            var nadjeno = false;
+            korisnici.every((korisnik) =>{
+                //console.log(korisnik.username);
+                //console.log(document.getElementById("inputuser").value);
+                if (document.getElementById("inputuser").value == korisnik.username) {
+                    nadjeno = true;
+                    if (document.getElementById("inputpw").value == korisnik.password){
+                        alert("Čestitamo! Uspješno ste se ulogirali.");
+                        proslo = true;
+                        return false;
+                    }
+                    else{
+                        alert("Niste upisali ispravnu lozinku.");
+                        return false;
+                    }
+                }
+                //else{
+                    //alert("To korisničko ime ne postoji.");
+                    
+                //}
+                return true;
+            });
+            if(nadjeno == false){
+                alert("To korisničko ime ne postoji.");
+            }
+            
+        }
+      function ulogiraj(){
+            var uspjesnost = provjera();
+            if (proslo == true){
+                console.log(document.getElementById("gumb").attributes[0].value = "home.html");
+            }
+        }
+        /*var korisnici;
+        korisnici = [
+            {
+                username: "maja",
+                password: "12345",
+                administrator: true
+            },
+            {
+                username: "nina",
+                password: "qwert",
+                administrator: false
+            }
+        ]
+        */
+        
+    </script>
+    <a href= "#" onclick='ulogiraj()' id ="gumb">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+</div>
+</body>
+</html>
